@@ -29,14 +29,14 @@ CREATE DATABASE workshop;
 そのままコピーして実行してもいいですし、次のコマンドでsql文を実行することができます。
 
 ```bash
-$ mysql -h 127.0.0.1 -u root -P 8889 root workshop < init.sql
+$ mysql -h 127.0.0.1 -u root root workshop < init.sql
 ```
 
 このチュートリアルでは、次の環境下で実行しています。
 
 * ユーザー名: root
 * パスワード: root
-* ポート番号: 8889
+* ポート番号: 3309
 
 ユーザー名、パスワード、ポート番号はお使いの環境に合わせて変更してください。
 
@@ -44,7 +44,7 @@ $ mysql -h 127.0.0.1 -u root -P 8889 root workshop < init.sql
 テーブルが作成されていることを確認してみましょう。次のようなテーブル情報が表示されていれば成功です！
 
 ```bash
-$ mysql -h 127.0.0.1 -u root -P 8889 -proot workshop -e "desc users;"
+$ mysql -h 127.0.0.1 -u root -proot workshop -e "desc users;"
 mysql: [Warning] Using a password on the command line interface can be insecure.
 +------------+--------------+------+-----+-------------------+----------------+
 | Field      | Type         | Null | Key | Default           | Extra          |
@@ -78,19 +78,14 @@ define('DB_HOST', '127.0.0.1'); //データベースのホスト名
 define('DB_NAME', 'workshop');  //データベース名
 define('DB_USER', 'root');      //データベースのユーザー名
 define('DB_PASSWORD', 'root');  //データベースのパスワード
-define('DB_PORT', '8889');      //データベースのポート番号
+define('DB_PORT', '3306');      //データベースのポート番号
 ```
 
 ## アプリケーションの起動
 
-それでは、アプリケーションを起動しましょう。ここでは、PHPのビルトインサーバーを利用します。
-ターミナルで次のコマンドを実行してください。
+MAMPの `htdocs/` の配下に `user-registration`を配置してください。
 
-```bash
-$ php -S localhost:8000
-```
-
-http://localhost:8000 にブラウザでアクセスしてみましょう。
+http://localhost/user-registration にブラウザでアクセスしてみましょう。
 ユーザー登録画面が表示されます。
 
 もし、エラーが表示された場合はデータベースの接続情報を確認してみてください。
